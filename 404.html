@@ -1,100 +1,139 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevianTarot | Девиантное таро</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Host+Grotesk:wght@400;500;700;900&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #0A0A0A;
-        color: #EAEFEA;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      .font-host { font-family: 'Host Grotesk', sans-serif; }
-      .font-jost { font-family: 'Jost', sans-serif; }
-      .font-futura { font-family: 'Futura', 'Jost', sans-serif; }
-      
-      .background-glow {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-        pointer-events: none;
-      }
-      .background-glow::after {
-        content: '';
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        background: #A6FEB6;
-        border-radius: 50%;
-        filter: blur(250px);
-        opacity: 0.12;
-        bottom: -250px;
-        right: -250px;
-      }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0A0A0A;
+            color: #EAEFEA;
+            line-height: 1.6;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .font-host { font-family: 'Host Grotesk', sans-serif; }
+        .font-futura { font-family: 'Host Grotesk', sans-serif; } /* Fallback for futura */
+        
+        .background-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .background-glow::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #B4D8C4;
+            border-radius: 50%;
+            filter: blur(250px);
+            opacity: 0.08;
+            bottom: -100px;
+            right: -100px;
+        }
+        .background-glow::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #B4D8C4;
+            border-radius: 50%;
+            filter: blur(200px);
+            opacity: 0.05;
+            top: -100px;
+            left: -100px;
+        }
 
-      #noise-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 9999;
-      }
-      #noise-overlay::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        filter: url(#noiseFilter);
-        opacity: 0.18;
-      }
+        #noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        #noise-overlay::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            filter: url(#noiseFilter);
+            opacity: 0.15;
+            animation: noise-jitter 0.2s infinite steps(2);
+        }
+
+        @keyframes noise-jitter {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-1%, -1%); }
+            20% { transform: translate(-2%, 1%); }
+            30% { transform: translate(1%, -2%); }
+            40% { transform: translate(-1%, 3%); }
+            50% { transform: translate(-2%, 1%); }
+            60% { transform: translate(3%, 0); }
+            70% { transform: translate(0, 2%); }
+            80% { transform: translate(-3%, 0); }
+            90% { transform: translate(2%, 1%); }
+            100% { transform: translate(1%, 0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
-  </head>
-  <body>
-    <!-- Noise Overlay -->
+</head>
+<body>
     <div id="noise-overlay"></div>
-    <svg style="display: none;">
-      <filter id="noiseFilter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-      </filter>
-    </svg>
-
-    <!-- Background Glow -->
     <div class="background-glow"></div>
 
-    <main class="flex-grow flex items-center justify-center relative z-10">
-      <div class="text-center px-6">
-        <h1 class="text-6xl md:text-8xl font-host font-bold mb-8 opacity-20">404</h1>
-        <p class="text-xl md:text-2xl font-jost font-light tracking-wide">
-          ещё не доделала сайт >_<
-        </p>
-      </div>
+    <svg style="display: none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        </filter>
+    </svg>
+
+    <main class="flex-grow flex items-center justify-center text-center px-6 fade-in py-20">
+        <div>
+            <div class="relative inline-block">
+                <h1 class="text-[120px] md:text-[180px] font-host font-black text-[#B4D8C4] leading-none opacity-20 select-none">404</h1>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <p class="text-sm md:text-base font-host font-medium text-[#EAEFEA] uppercase tracking-widest max-w-xs mx-auto">
+                        Кажется, эта ссылка ведет в бессознательное
+                    </p>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="index.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#B4D8C4] text-black font-bold text-sm uppercase tracking-widest hover:bg-white transition-all duration-500 group">
+                    вернуться на главную
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black py-16 px-6 relative z-10">
-      <div class="max-w-7xl mx-auto flex flex-col items-center md:items-start gap-10 text-center md:text-left">
+    <footer class="bg-black py-16 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col items-start gap-10 text-left">
         <a href="index.html" class="flex items-center gap-3 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8">
             <g>
@@ -103,7 +142,7 @@
             </g>
             <path fill="#B4D8C4" d="M7.82,34.22h282.03v446.04H7.82V34.22ZM53.14,439.03c54.23.89,112.01-11.39,149.48-53.03,52.76-58.64,55.38-175.73,12.43-240.21-36.07-54.15-99.33-71.81-161.92-70.34v363.59Z"/>
           </svg>
-          <span class="font-futura text-xl font-semibold tracking-wider text-[#B4D8C4] group-hover:opacity-80 transition-opacity">
+          <span class="font-futura text-2xl font-semibold tracking-tight text-[#B4D8C4] group-hover:opacity-80 transition-opacity">
             DEVIANTAROT
           </span>
         </a>
@@ -111,8 +150,18 @@
             <a href="https://t.me/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Telegram</a>
             <a href="https://youtube.com/@deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">YouTube</a>
             <a href="https://vk.com/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">VK</a>
+            <a href="https://boosty.to/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Boosty</a>
         </div>
       </div>
     </footer>
-  </body>
+
+    <script>
+        // Subtle mouse movement for the glow
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            document.querySelector('.background-glow').style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body>
 </html>

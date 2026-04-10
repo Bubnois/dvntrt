@@ -30,12 +30,13 @@
       .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4, .prose-custom strong { color: var(--text-primary); }
       .prose-custom ul > li::before { background-color: var(--text-secondary); content: ''; } /* Reset default marker */
       #noise-overlay {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         pointer-events: none;
+        z-index: 9999;
       }
       #noise-overlay::before {
         content: '';
@@ -80,10 +81,9 @@
     </style>
   </head>
   <body class="overflow-x-hidden">
-    <div class="oil-paint-bg">
-      <div id="noise-overlay"></div>
-    </div>
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] px-6 py-4 transition-all bg-white/30 backdrop-blur-md border-b border-white/20">
+    <div class="oil-paint-bg"></div>
+    <div id="noise-overlay"></div>
+    <nav class="fixed top-0 left-0 w-full z-[100] px-6 py-4 transition-all bg-white/30 backdrop-blur-md border-b border-white/20">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8">
@@ -94,37 +94,7 @@
             <path fill="#e6454a" d="M7.82,34.22h282.03v446.04H7.82V34.22ZM53.14,439.03c54.23.89,112.01-11.39,149.48-53.03,52.76-58.64,55.38-175.73,12.43-240.21-36.07-54.15-99.33-71.81-161.92-70.34v363.59Z"/>
           </svg>
           <span class="font-futura text-xl font-semibold tracking-wider text-[#e6454a] group-hover:opacity-80 transition-opacity">DEVIANTAROT</span></a>
-        
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html#about" class="text-xs text-[#4a4a4a] hover:text-[#e6454a] transition-colors uppercase font-bold tracking-[0.2em]">Об авторе</a>
-          <a href="index.html#video" class="text-xs text-[#4a4a4a] hover:text-[#e6454a] transition-colors uppercase font-bold tracking-[0.2em]">Видео</a>
-          <a href="index.html#courses" class="text-xs text-[#4a4a4a] hover:text-[#e6454a] transition-colors uppercase font-bold tracking-[0.2em]">Курсы</a>
-          <a href="index.html#sessions" class="text-xs text-[#4a4a4a] hover:text-[#e6454a] transition-colors uppercase font-bold tracking-[0.2em]">Услуги</a>
-          <a href="index.html#articles" class="text-xs text-[#4a4a4a] hover:text-[#e6454a] transition-colors uppercase font-bold tracking-[0.2em]">Статьи</a>
-          <a href="index.html#contact" class="text-xs text-[#4a4a4a] hover:text-[#e6454a] transition-colors uppercase font-bold tracking-[0.2em]">Контакты</a>
-        </div>
-
-        <button id="menu-toggle" class="md:hidden relative z-[110] p-2 text-[#e6454a]" >
-          <div class="space-y-1.5 w-6">
-            <span class="block h-0.5 bg-current transition-all origin-center"   id="line1"></span>
-            <span class="block h-0.5 bg-current transition-all"  id="line2"></span>
-            <span class="block h-0.5 bg-current transition-all origin-center"   id="line3"></span>
-          </div>
-        </button>
       </div>
-
-      <!-- Mobile Menu Content -->
-      <div id="mobile-menu" class="fixed top-0 right-0 w-[80%] h-screen bg-[#0A0A0A] z-[105] shadow-2xl flex flex-col p-12 gap-8" >
-        <div class="mt-12 space-y-8">
-          <a href="index.html#about" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Об авторе</a>
-          <a href="index.html#video" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Видео</a>
-          <a href="index.html#courses" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Курсы</a>
-          <a href="index.html#sessions" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Услуги</a>
-          <a href="index.html#articles" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Статьи</a>
-          <a href="index.html#contact" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Контакты</a>
-        </div>
-      </div>
-      <div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[101] transition-opacity hidden opacity-0"    tabindex="0"  ></div>
     </nav>
     <main>
         <div id="hero-mmm" class="relative w-full md:max-w-4xl mx-auto h-[50vh] overflow-hidden flex items-center justify-center">
@@ -424,27 +394,33 @@
             </div>
         </section>
 
-        <section class="reveal space-y-6 !mt-48 !mb-48">
-            <span class="text-xs font-black uppercase tracking-widest text-[#e6454a] mb-4 block">Если еще не уверены</span>
-            <h2 class="text-5xl font-garamond text-[#1a1a1a] mb-6">Почему вы одиноки? Общий расклад</h2>
-            <p class="text-[#4a4a4a]">Говорим о том как можно прочитать символы карт на Таро не только с точки зрения эзотерики, но и с точки зрения психологии на базе популярного формата - общий расклад Таро.</p>
-            <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border border-black/5 bg-black/5">
-                <iframe 
-                    src="https://vk.com/video_ext.php?oid=-168427550&id=456239228&hash=165e90a397f1dfa1c7" 
-                    class="absolute inset-0 w-full h-full"
-                    frameborder="0" 
-                    allowfullscreen="1" 
-                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture">
-                </iframe>
-            </div>
-        </section>
-
 
 
       </div>
+            <section class="reveal w-full mt-12 mb-16">
+         <div class="max-w-4xl mx-auto px-6 md:px-0 mb-8">
+             <!-- Header removed -->
+         </div>
+         
+         <div class="max-w-4xl mx-auto px-0">
+            <img src="img/alina.jpg" alt="Atmospheric footer image" class="w-full h-[50vh] object-cover opacity-60 mb-6">
+         </div>
+         
+         <div class="max-w-4xl mx-auto px-6 md:px-0 prose-custom">
+            <p class="text-lg text-[#1a1a1a] mb-4">Меня зовут Алина Базарова</p>
+            <ul class="list-none p-0 space-y-2 prose-custom">
+                <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[#1a1a1a] mt-2 flex-shrink-0"></div><span>Дипломированный психолог (2021 г.), действующий психотерапевт</span></li>
+                <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[#1a1a1a] mt-2 flex-shrink-0"></div><span>Таролог с опытом практики 14 лет</span></li>
+                <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[#1a1a1a] mt-2 flex-shrink-0"></div><span>Создатель проекта DevianTarot, Метод Базаровой</span></li>
+                <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[#1a1a1a] mt-2 flex-shrink-0"></div><span>Автор курсов "Адвокат Дьявола", "16 друзей Оушэна", "Безумный курс" по Таро Безумной Луны, "Миры Мило Манары" по Таро Манара, "Николетта в стране кошмаров" по Таро Николетты Чекколи</span></li>
+                <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[#1a1a1a] mt-2 flex-shrink-0"></div><span>Сотрудничаю с издательством Аввалон Ло Скарабео, а также проектом "Аналитическое Таро"</span></li>
+                <li class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full bg-[#1a1a1a] mt-2 flex-shrink-0"></div><span>Люблю второсортные мемы.</span></li>
+            </ul>
+         </div>
+      </section>
     </main>
     <footer class="bg-black py-16 px-6">
-      <div class="max-w-7xl mx-auto flex flex-col items-start gap-10 text-left">
+      <div class="max-w-7xl mx-auto flex flex-col items-center md:items-start gap-10 text-center md:text-left">
         <a href="index.html" class="flex items-center gap-3 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8">
             <g>
@@ -453,7 +429,7 @@
             </g>
             <path fill="#B4D8C4" d="M7.82,34.22h282.03v446.04H7.82V34.22ZM53.14,439.03c54.23.89,112.01-11.39,149.48-53.03,52.76-58.64,55.38-175.73,12.43-240.21-36.07-54.15-99.33-71.81-161.92-70.34v363.59Z"/>
           </svg>
-          <span class="font-futura text-2xl font-semibold tracking-tight text-[#B4D8C4] group-hover:opacity-80 transition-opacity">
+          <span class="font-futura text-xl font-semibold tracking-wider text-[#B4D8C4] group-hover:opacity-80 transition-opacity">
             DEVIANTAROT
           </span>
         </a>
@@ -461,7 +437,7 @@
             <a href="https://t.me/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Telegram</a>
             <a href="https://youtube.com/@deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">YouTube</a>
             <a href="https://vk.com/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">VK</a>
-            <a href="https://boosty.to/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Boosty</a>
+            <a href="https://boosty.to/asda" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Boosty</a>
         </div>
       </div>
     </footer>
@@ -482,47 +458,6 @@
 
         reveals.forEach(el => revealObserver.observe(el));
 
-        // Menu toggle
-        let isMenuOpen = false;
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const line1 = document.getElementById('line1');
-        const line2 = document.getElementById('line2');
-        const line3 = document.getElementById('line3');
-
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.add('active');
-                menuOverlay.classList.remove('hidden');
-                setTimeout(() => menuOverlay.classList.add('opacity-100'), 10);
-                line1.classList.add('rotate-45', 'translate-y-2');
-                line2.classList.add('opacity-0');
-                line3.classList.add('-rotate-45', '-translate-y-2');
-                document.body.style.overflow = 'hidden';
-            } else {
-                mobileMenu.classList.remove('active');
-                menuOverlay.classList.remove('opacity-100');
-                setTimeout(() => {
-                    menuOverlay.classList.add('hidden');
-                }, 400);
-                line1.classList.remove('rotate-45', 'translate-y-2');
-                line2.classList.remove('opacity-0');
-                line3.classList.remove('-rotate-45', '-translate-y-2');
-                document.body.style.overflow = '';
-            }
-        }
-
-        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
-        if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
-
-        // Close menu on link click
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) toggleMenu();
-            });
-        });
       });
     </script>
   </body>
