@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevianTarot | Курс «Хроники Безумного»</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:wght@400;500;700&family=Host+Grotesk:wght@400;500;700;900&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --text-primary: #EAEFEA;
+        --text-secondary: #A8B0A9;
+        --accent: #B4D8C4;
+        --bg-main: #0A0A0A;
+      }
+      
+      body { 
+        font-family: 'Roboto', sans-serif; 
+        background-color: var(--bg-main); 
+        color: var(--text-primary); 
+        line-height: 1.6; 
+      }
+      
+      .font-host { font-family: 'Host Grotesk', sans-serif; }
+      .font-jost { font-family: 'Jost', sans-serif; }
+      .font-futura { font-family: 'Futura', 'Jost', sans-serif; }
+      .font-garamond { font-family: 'EB Garamond', serif; }
+
+      .background-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .background-glow::after {
+        content: '';
+        position: absolute;
+        width: 1600px;
+        height: 1600px;
+        background: radial-gradient(50% 50% at 50% 50%, rgba(180, 216, 196, 1) 0%, rgba(166, 254, 182, 0.5) 25%, rgba(166, 254, 182, 0.15) 50%, rgba(166, 254, 182, 0) 75%);
+        border-radius: 50%;
+        opacity: 0.12;
+        bottom: -750px;
+        right: -750px;
+      }
+
+      #noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        overflow: hidden;
+      }
+      #noise-overlay::before {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+        opacity: 0.22;
+        animation: noise-jitter 0.2s infinite steps(2);
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+
+      @keyframes noise-jitter {
+        0% { transform: translate(0, 0); }
+        10% { transform: translate(-1%, -1%); }
+        20% { transform: translate(-2%, 1%); }
+        30% { transform: translate(1%, -2%); }
+        40% { transform: translate(-1%, 3%); }
+        50% { transform: translate(-2%, 1%); }
+        60% { transform: translate(3%, 0); }
+        70% { transform: translate(0, 2%); }
+        80% { transform: translate(-3%, 0); }
+        90% { transform: translate(2%, 1%); }
+        100% { transform: translate(1%, 0); }
+      }
+      
+      .prose-custom { color: var(--text-secondary); }
+      .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4, .prose-custom strong { color: var(--text-primary); }
+      
+      .education-plate {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 0.6rem 1rem;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 80px;
+      }
+
+      .education-plate:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Mobile Menu Fix */
+      #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #mobile-menu.active {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body class="bg-[#0A0A0A] text-[#EAEFEA] font-sans overflow-x-hidden">
+    <div class="background-glow"></div>
+    <div id="noise-overlay"></div>
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] px-6 py-4 transition-all bg-black/30 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="standalone.html" class="flex items-center gap-3 group">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8">
+            <g>
+              <polygon fill="#B4D8C4" points="506.95 147.08 506.95 192.36 404.15 192.36 404.15 480.26 358.83 480.26 358.83 147.08 506.95 147.08"/>
+              <rect fill="#B4D8C4" x="358.83" y="34.89" width="147.44" height="45.28"/>
+            </g>
+            <path fill="#B4D8C4" d="M7.82,34.22h282.03v446.04H7.82V34.22ZM53.14,439.03c54.23.89,112.01-11.39,149.48-53.03,52.76-58.64,55.38-175.73,12.43-240.21-36.07-54.15-99.33-71.81-161.92-70.34v363.59Z"/>
+          </svg>
+          <span class="font-futura text-xl font-semibold tracking-wider text-[#B4D8C4] group-hover:opacity-80 transition-opacity">DEVIANTAROT</span></a>
+        
+        <div class="hidden md:flex items-center gap-8">
+          <a href="standalone.html#about" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Об авторе</a>
+          <a href="standalone.html#video" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Видео</a>
+          <a href="standalone.html#courses" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Курсы</a>
+          <a href="standalone.html#sessions" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Услуги</a>
+          <a href="standalone.html#articles" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Статьи</a>
+          <a href="standalone.html#contact" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Контакты</a>
+        </div>
+
+        <button id="menu-toggle" class="md:hidden relative z-[110] p-2 text-[#B4D8C4]" >
+          <div class="space-y-1.5 w-6">
+            <span class="block h-0.5 bg-current transition-all origin-center"   id="line1"></span>
+            <span class="block h-0.5 bg-current transition-all"  id="line2"></span>
+            <span class="block h-0.5 bg-current transition-all origin-center"   id="line3"></span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Content -->
+      <div id="mobile-menu" class="fixed top-0 right-0 w-[80%] h-screen bg-[#0A0A0A] z-[105] shadow-2xl flex flex-col p-12 gap-8" >
+        <div class="mt-12 space-y-8">
+          <a href="standalone.html#about" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Об авторе</a>
+          <a href="standalone.html#video" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Видео</a>
+          <a href="standalone.html#courses" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Курсы</a>
+          <a href="standalone.html#sessions" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Услуги</a>
+          <a href="standalone.html#articles" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Статьи</a>
+          <a href="standalone.html#contact" class="text-3xl font-host font-medium text-[#EAEFEA] mobile-link block hover:text-[#B4D8C4]" >Контакты</a>
+        </div>
+      </div>
+      <div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[101] transition-opacity hidden opacity-0"    tabindex="0"  ></div>
+    </nav>
+    <main>
+    <header id="hero" class="relative h-[80vh] flex items-center justify-center overflow-hidden z-10">
+      <div class="absolute inset-0 z-0 scale-105">
+        <img src="img/moon/1.jpg" alt="Хроники Безумного" class="w-full h-full object-cover object-center" referrerpolicy="no-referrer">
+      </div>
+    </header>
+
+      <div class="max-w-4xl mx-auto prose-custom px-6 md:px-12 pt-12 pb-32 space-y-16 md:space-y-24 text-sm md:text-base leading-relaxed text-[#A8B0A9]">
+        
+        <section class="reveal">
+          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Хочу предложить безумство!</h2>
+          <div class="space-y-6">
+            <p>Таро Безумной Луны – колода, которая не оставляет никого равнодушным: ведь она предлагает столкнуться с собой настоящим и либо пугает, либо вызывает безумный интерес. Колода, которая является вершиной творения художника Патрика Валенцы и создавалась на протяжении более чем 30 лет. В ее символике скрыты глубины человеческого бессознательного: она приоткрывает дверь к нашим подсознательным страхам, травмам и желаниям – тому самому незримому, что порой сокрыто от нашего сознания, но является истинной причиной проблем.</p>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Если Вы…</h2>
+          
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div class="education-plate p-6 md:p-8 min-h-[120px]">
+              <div class="relative z-10">
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Устали от поверхностных трактовок карт Таро в раскладе</h4>
+              </div>
+              <svg class="absolute -right-4 -bottom-4 w-20 h-20 text-gray-500 opacity-5 transform rotate-12 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+
+            <div class="education-plate p-6 md:p-8 min-h-[120px]">
+              <div class="relative z-10">
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Хотите видеть то, что стоит за запросом клиентов</h4>
+              </div>
+              <svg class="absolute -left-4 -top-4 w-20 h-20 text-gray-500 opacity-5 transform -rotate-12 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+
+            <div class="education-plate p-6 md:p-8 min-h-[120px]">
+              <div class="relative z-10">
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Желаете считывать причинно-следственные связи</h4>
+              </div>
+              <svg class="absolute -right-6 top-0 w-20 h-20 text-gray-500 opacity-5 transform rotate-45 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+
+            <div class="education-plate p-6 md:p-8 min-h-[120px]">
+              <div class="relative z-10">
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Стремитесь к глубокой психологической консультации</h4>
+              </div>
+              <svg class="absolute -left-4 -bottom-4 w-20 h-20 text-gray-500 opacity-5 transform -rotate-45 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            </div>
+
+            <div class="education-plate p-6 md:p-8 min-h-[120px]">
+              <div class="relative z-10">
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Ищете уникальный инструмент самопознания</h4>
+              </div>
+              <svg class="absolute left-1/2 -bottom-8 w-20 h-20 text-gray-500 opacity-5 transform -translate-x-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            </div>
+
+            <div class="education-plate p-6 md:p-8 min-h-[120px]">
+              <div class="relative z-10">
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Мечтаете стать уникальным тарологом</h4>
+              </div>
+              <svg class="absolute -right-4 -bottom-4 w-20 h-20 text-gray-500 opacity-5 transform rotate-12 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </div>
+          </div>
+          <p class="mt-6 italic">…то уникальное обучение по Таро Безумной Луны возвращается! Еще больше безумия, еще больше психологии!</p>
+        </section>
+
+        <section class="reveal">
+          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">О курсе</h2>
+          <div class="my-8 -mx-6 md:mx-auto md:max-w-2xl">
+            <img src="img/moon/1.jpg" alt="О курсе" class="w-full aspect-square object-cover rounded-none md:rounded-2xl" referrerpolicy="no-referrer">
+          </div>
+          <div class="space-y-6">
+            <p>Я приглашаю вас в курс-погружение <strong>«Хроники Безумной Луны»</strong>, воплощающий девиантный формат обучения: исследуя слои символизма мы не только превращаемся в тарологов, которые видят своих клиентов «как на ладони» и дают им тончайшие рекомендации, но и исцеляем себя, заглядывая в бездну своих собственных тайн и страхов, попутно решая свои психологические проблемы. Дешевле и порой действеннее психотерапии!</p>
+            <p>Курс универсален и подходит как новичкам, которые только взяли карты в руки, так и профессионалам. Главное лишь Ваше желание использовать Таро как психологический инструмент и стремление «закопаться» в процессе консультации и вывести проблему как она есть из самых глубин бессознательного.</p>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h3 class="text-xl md:text-2xl font-host font-medium text-[#EAEFEA] mb-2">Что Вас ждет на курсе:</h3>
+          <div class="bg-white/[0.03] backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/5">
+              <ul class="list-none p-0 mt-2 space-y-4 text-sm md:text-base">
+                <li class="flex items-start gap-4"><div class="w-2.5 h-2.5 rounded-full bg-[#B4D8C4] mt-2.5 flex-shrink-0"></div><span>Уникальный психологический подход: анализ карт с использованием символизма Юнга, Фрейда, Эриксона, Люшера.</span></li>
+                <li class="flex items-start gap-4"><div class="w-2.5 h-2.5 rounded-full bg-[#B4D8C4] mt-2.5 flex-shrink-0"></div><span>Практические задания на отработку раскладов и исследование работы собственного бессознательного.</span></li>
+                <li class="flex items-start gap-4"><div class="w-2.5 h-2.5 rounded-full bg-[#B4D8C4] mt-2.5 flex-shrink-0"></div><span>Ламповые прямые эфиры с ответами на вопросы и обсуждениями практики Таро и работы с клиентами.</span></li>
+                <li class="flex items-start gap-4"><div class="w-2.5 h-2.5 rounded-full bg-[#B4D8C4] mt-2.5 flex-shrink-0"></div><span>Юмор и легкость в донесении материала: никакой занудности, мы — исследователи!</span></li>
+              </ul>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Почему именно этот курс?</h2>
+          <div class="space-y-6">
+            <p>Таро Безумной Луны – колода, которая не оставляет никого равнодушным: ведь она предлагает столкнуться с собой настоящим и либо пугает, либо вызывает безумный интерес. Колода, которая является вершиной творения художника Патрика Валенцы и создавалась на протяжении более чем 30 лет.</p>
+            <p>В ее символике скрыты глубины человеческого бессознательного: она приоткрывает дверь к нашим подсознательным страхам, травмам и желаниям – тому самому незримому, что порой сокрыто от нашего сознания, но является истинной причиной проблем.</p>
+          </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Программа курса</h2>
+            <div class="space-y-8">
+                <!-- Module 1 -->
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#B4D8C4] mb-4 block">Блок 1. Добро пожаловать в Хронику</span>
+                    <div class="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden relative">
+                        <div class="absolute top-4 right-4 z-10">
+                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] text-[#A8B0A9] font-medium border border-white/10 uppercase tracking-wider">10 часов</span>
+                        </div>
+                        <img src="img/moon/3.jpg" alt="Блок 1" class="w-full aspect-square object-cover">
+                        <div class="p-6 md:p-8 pb-4 md:pb-4">
+                            <ul class="list-none p-0 space-y-3 mb-0">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">История колоды: личность Патрика Валенцы и процесс создания карт</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Мир Безумной Луны: анализ авансцен арканов и роль фаз Луны</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Психология: Персона и Тень (Юнг), цветовая диагностика Люшера</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/5 p-6 md:p-8 pt-4 md:pt-4 border-t border-white/5">
+                            <p class="mb-4 font-bold text-[#EAEFEA] text-lg md:text-xl">По итогу блока вы:</p>
+                            <ul class="list-none p-0 space-y-3">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">поймете с какими сферами колода работает лучше всего</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">узнаете о методе прогнозирования при помощи ТБЛ и значении символов</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">уже сможете читать первые расклады на ТБЛ</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#B4D8C4] mb-4 block">Блок 2. Хроники Старших Арканов</span>
+                    <div class="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden relative">
+                        <div class="absolute top-4 right-4 z-10">
+                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] text-[#A8B0A9] font-medium border border-white/10 uppercase tracking-wider">24 часа</span>
+                        </div>
+                        <img src="img/moon/4.jpg" alt="Блок 2" class="w-full aspect-square object-cover">
+                        <div class="p-6 md:p-8 pb-4 md:pb-4">
+                            <ul class="list-none p-0 space-y-3 mb-0">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Подробный анализ 22 Старших Арканов: девиации и травматика</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Тайные желания, скрытые мотивации и шаблоны поведения</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Ключи решения проблем и исцеления травмы</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#B4D8C4] mb-4 block">Блок 3. Хроники Младших Арканов</span>
+                    <div class="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden relative">
+                        <div class="absolute top-4 right-4 z-10">
+                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] text-[#A8B0A9] font-medium border border-white/10 uppercase tracking-wider">15 часов</span>
+                        </div>
+                        <img src="img/moon/5.jpg" alt="Блок 3" class="w-full aspect-square object-cover">
+                        <div class="p-6 md:p-8 pb-4 md:pb-4">
+                            <ul class="list-none p-0 space-y-3 mb-0">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Анализ 40 числовых арканов: системные значения и базовые инстинкты</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Копинг-стратегии преодоления стресса, сокрытые в арканах</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Способы решения материальных и психологических проблем</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#B4D8C4] mb-4 block">Блок 4. Хроники Двора</span>
+                    <div class="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden relative">
+                        <div class="absolute top-4 right-4 z-10">
+                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] text-[#A8B0A9] font-medium border border-white/10 uppercase tracking-wider">8 часов</span>
+                        </div>
+                        <img src="img/moon/6.jpg" alt="Блок 4" class="w-full aspect-square object-cover">
+                        <div class="p-6 md:p-8 pb-4 md:pb-4">
+                            <ul class="list-none p-0 space-y-3 mb-0">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Придворные фигуры: психологические типы в Безумной Луне</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Патологические формы воспитания и их влияние на поведение</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Ресурсы для излечения травмы</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/5 p-6 md:p-8 pt-4 md:pt-4 border-t border-white/5">
+                            <p class="mb-4 font-bold text-[#EAEFEA] text-lg md:text-xl">По итогу курса вы:</p>
+                            <ul class="list-none p-0 space-y-3">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">понимаете психологическую подноготную любой проблемы в раскладе</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">даете четкие рекомендации по работе с «затыками» своим клиентам</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">наращиваете глубину своих консультаций</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#B4D8C4] mb-4 block">Блок 5. Ее величество Практика</span>
+                    <div class="bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden relative">
+                        <div class="absolute top-4 right-4 z-10">
+                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px] text-[#A8B0A9] font-medium border border-white/10 uppercase tracking-wider">12 часов</span>
+                        </div>
+                        <img src="img/moon/7.jpg" alt="Блок 5" class="w-full aspect-square object-cover">
+                        <div class="p-6 md:p-8 pb-4 md:pb-4">
+                            <ul class="list-none p-0 space-y-3 mb-0">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Методы работы с ТБЛ вне раскладов, авторские техники</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Методика «дегтя» в работе с ТБЛ как колодой-компаньоном</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Реальные примеры чтения психологических раскладов</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal space-y-12">
+            <h2 class="text-4xl md:text-6xl font-host font-medium text-[#EAEFEA] mb-10 leading-tight">Формат обучения</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="bg-white/[0.03] backdrop-blur-sm p-4 rounded-2xl hover:bg-white/10 transition-all group flex flex-col justify-between h-full">
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center text-[#A8B0A9] group-hover:bg-[#B4D8C4] group-hover:text-black transition-all mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[#EAEFEA] font-host font-medium text-base mb-1">Видеоуроки</h4>
+                        <p class="text-sm md:text-base text-[#A8B0A9]">В записи, 50 мин в среднем</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/[0.03] backdrop-blur-sm p-4 rounded-2xl hover:bg-white/10 transition-all group flex flex-col justify-between h-full">
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center text-[#A8B0A9] group-hover:bg-[#B4D8C4] group-hover:text-black transition-all mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[#EAEFEA] font-host font-medium text-base mb-1">Доступ</h4>
+                        <p class="text-sm md:text-base text-[#A8B0A9]">4 месяца обучения</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/[0.03] backdrop-blur-sm p-4 rounded-2xl hover:bg-white/10 transition-all group flex flex-col justify-between h-full">
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center text-[#A8B0A9] group-hover:bg-[#B4D8C4] group-hover:text-black transition-all mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[#EAEFEA] font-host font-medium text-base mb-1">Группы</h4>
+                        <p class="text-sm md:text-base text-[#A8B0A9]">Поддержка и чат</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/[0.03] backdrop-blur-sm p-4 rounded-2xl hover:bg-white/10 transition-all group flex flex-col justify-between h-full">
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center text-[#A8B0A9] group-hover:bg-[#B4D8C4] group-hover:text-black transition-all mb-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-[#EAEFEA] font-host font-medium text-base mb-1">Конспекты</h4>
+                        <p class="text-sm md:text-base text-[#A8B0A9]">PDF и сертификат</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="reveal">
+            <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Стоимость и условия</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-white/[0.03] backdrop-blur-sm rounded-3xl px-4 py-4 md:py-10 md:px-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-[#B4D8C4]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center relative z-10">
+                        <div>
+                            <div class="flex items-center gap-4 mb-2">
+                                <span class="text-4xl md:text-5xl font-host font-bold text-[#B4D8C4]">24 222 ₽</span>
+                            </div>
+                            <p class="text-sm md:text-base text-[#A8B0A9]">Рассрочка на 3 месяца</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="bg-white/[0.03] p-5 md:p-6 rounded-2xl">
+                                <div class="flex flex-col gap-4">
+                                    <div>
+                                        <p class="text-[#EAEFEA] text-sm md:text-base mb-2">Для записи на курс пишите мне:</p>
+                                        <div class="flex flex-col gap-2">
+                                            <a href="https://vk.com/tarotdeviant" target="_blank" class="w-full py-3 rounded-xl bg-[#B4D8C4] text-black font-bold text-sm uppercase tracking-widest hover:bg-[#A0C4B0] transition-colors text-center flex items-center justify-center gap-2">VK</a>
+                                            <a href="https://t.me/nortlin" target="_blank" class="w-full py-3 rounded-xl bg-[#B4D8C4] text-black font-bold text-sm uppercase tracking-widest hover:bg-[#A0C4B0] transition-colors text-center flex items-center justify-center gap-2">Telegram</a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-[#EAEFEA] text-sm md:text-base mb-2">Оплатить без реквизитов:</p>
+                                        <a href="https://boosty.to/deviantarot" target="_blank" class="w-full py-3 rounded-xl bg-[#F15F2C] text-white font-bold text-sm uppercase tracking-widest hover:bg-[#d94d1a] transition-colors text-center flex items-center justify-center gap-2">Boosty</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal !mt-64 !mb-64">
+            <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#B4D8C4] mb-2 block">ЕСЛИ ЕЩЕ НЕ УВЕРЕНЫ</span>
+            
+            <div class="space-y-12 mt-12">
+                <div>
+                    <p class="text-[#A8B0A9] mb-4">Рекомендую ознакомиться с двухчасовым вебинаром, который посвящен разбору тем, с которыми Таро Безумной Луны работает наиболее эффективно. Пример чтения авторского расклада "Страдание", направленный на анализ негативных переживаний.</p>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black/5">
+                        <iframe 
+                            src="https://vk.com/video_ext.php?oid=-168427550&id=456239191" 
+                            class="absolute inset-0 w-full h-full"
+                            frameborder="0" 
+                            allowfullscreen="1">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-[#A8B0A9] mb-4">Обсуждаем один из самых мистических символов в Таро Безумной Луны - значение Луны в арканах колоды, роль фазы Луны при трактовке раскладов, а также в каких случаях стоит уделить ей внимание, а когда....просто не выносить себе мозг.</p>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black/5">
+                        <iframe 
+                            src="https://vk.com/video_ext.php?oid=-168427550&id=456239211" 
+                            class="absolute inset-0 w-full h-full"
+                            frameborder="0" 
+                            allowfullscreen="1">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-[#A8B0A9] mb-4">Также рекомендую к просмотру запись доклада с конференции "Таро на блюдечке", приуроченной ко Дню Таролога от Аввалон Ло Скарабео, посвященного символизму клетчатого пола в Таро Безумной Луны</p>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black/5">
+                        <iframe 
+                            src="https://vk.com/video_ext.php?oid=-168427550&id=456239209" 
+                            class="absolute inset-0 w-full h-full"
+                            frameborder="0" 
+                            allowfullscreen="1">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      </div>
+    </main>
+    <footer class="bg-black py-16 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col items-start gap-10 text-left">
+        <a href="standalone.html" class="flex items-center gap-3 group">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8">
+            <g>
+              <polygon fill="#B4D8C4" points="506.95 147.08 506.95 192.36 404.15 192.36 404.15 480.26 358.83 480.26 358.83 147.08 506.95 147.08"/>
+              <rect fill="#B4D8C4" x="358.83" y="34.89" width="147.44" height="45.28"/>
+            </g>
+            <path fill="#B4D8C4" d="M7.82,34.22h282.03v446.04H7.82V34.22ZM53.14,439.03c54.23.89,112.01-11.39,149.48-53.03,52.76-58.64,55.38-175.73,12.43-240.21-36.07-54.15-99.33-71.81-161.92-70.34v363.59Z"/>
+          </svg>
+          <span class="font-futura text-2xl font-semibold tracking-tight text-[#B4D8C4] group-hover:opacity-80 transition-opacity">DEVIANTAROT</span>
+        </a>
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-6 md:gap-8">
+            <a href="https://t.me/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Telegram</a>
+            <a href="https://youtube.com/@deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">YouTube</a>
+            <a href="https://vk.com/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">VK</a>
+            <a href="https://boosty.to/deviantarot" target="_blank" class="text-xs text-[#A8B0A9] hover:text-[#EAEFEA] transition-colors uppercase font-bold tracking-[0.2em]">Boosty</a>
+        </div>
+      </div>
+    </footer>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
+      <filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.595" numOctaves="2" stitchTiles="stitch" seed="0" /></filter>
+    </svg>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => revealObserver.observe(el));
+
+        let isMenuOpen = false;
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.remove('hidden');
+                setTimeout(() => menuOverlay.classList.add('opacity-100'), 10);
+                line1.classList.add('rotate-45', 'translate-y-2');
+                line2.classList.add('opacity-0');
+                line3.classList.add('-rotate-45', '-translate-y-2');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('opacity-100');
+                setTimeout(() => { menuOverlay.classList.add('hidden'); }, 400);
+                line1.classList.remove('rotate-45', 'translate-y-2');
+                line2.classList.remove('opacity-0');
+                line3.classList.remove('-rotate-45', '-translate-y-2');
+                document.body.style.overflow = '';
+            }
+        }
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => { if (isMenuOpen) toggleMenu(); });
+        });
+      });
+    </script>
+  </body>
+</html>
