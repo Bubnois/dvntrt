@@ -92,7 +92,8 @@
       }
       
       .prose-custom { color: var(--text-secondary); }
-      .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom h4, .prose-custom strong { color: var(--text-primary); }
+      .prose-custom h1 { color: var(--text-primary); }
+      .prose-custom strong { color: inherit; font-weight: 700; }
       
       .education-plate {
         background-color: rgba(255, 255, 255, 0.05);
@@ -179,25 +180,26 @@
       <div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[101] transition-opacity hidden opacity-0"    tabindex="0"  ></div>
     </nav>
     <main>
-    <header id="hero" class="relative h-[80vh] flex items-center justify-center overflow-hidden z-10">
+        <header id="hero" class="relative h-[80vh] flex items-center justify-center overflow-hidden z-10">
       <div class="absolute inset-0 z-0 scale-105">
         <img src="img/moon/1.jpg" alt="Хроники Безумного" class="w-full h-full object-cover object-center" referrerpolicy="no-referrer">
       </div>
     </header>
 
+      <div class="max-w-4xl mx-auto prose-custom px-6 md:px-12 pt-12 text-sm md:text-base leading-relaxed text-[#A8B0A9]">
+        <section class="reveal">
+          <div class="space-y-6">
+            <p>Таро Безумной Луны – колода, которая не оставляет никого равнодушным: ведь она предлагает столкнуться с собой настоящим и либо пугает, либо вызывает безумный интерес. Колода, которая является вершиной творения художника Патрика Валенцы и создавалась на протяжении более чем 30 лет. В ее символике скрыты глубины человеческого бессознательного: она <strong>приоткрывает дверь к нашим подсознательным страхам, травмам и желаниям</strong> – тому самому незримому, что порой сокрыто от нашего сознания, но является истинной причиной проблем.</p>
+          </div>
+        </section>
+      </div>
+
       <div class="max-w-4xl mx-auto prose-custom px-6 md:px-12 pt-12 pb-32 space-y-16 md:space-y-24 text-sm md:text-base leading-relaxed text-[#A8B0A9]">
         
         <section class="reveal">
-          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Хочу предложить безумство!</h2>
-          <div class="space-y-6">
-            <p>Таро Безумной Луны – колода, которая не оставляет никого равнодушным: ведь она предлагает столкнуться с собой настоящим и либо пугает, либо вызывает безумный интерес. Колода, которая является вершиной творения художника Патрика Валенцы и создавалась на протяжении более чем 30 лет. В ее символике скрыты глубины человеческого бессознательного: она приоткрывает дверь к нашим подсознательным страхам, травмам и желаниям – тому самому незримому, что порой сокрыто от нашего сознания, но является истинной причиной проблем.</p>
-          </div>
-        </section>
-
-        <section class="reveal">
-          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Если Вы…</h2>
+          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Хочу предложить безумство, если...</h2>
           
-          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-12">
             <div class="education-plate p-6 md:p-8 min-h-[120px]">
               <div class="relative z-10">
                 <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Устали от поверхностных трактовок карт Таро в раскладе</h4>
@@ -207,35 +209,35 @@
 
             <div class="education-plate p-6 md:p-8 min-h-[120px]">
               <div class="relative z-10">
-                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Хотите видеть то, что стоит за запросом Ваших клиентов: не боитесь видеть их травмы и «прописанные» когнитивные установки</h4>
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Хотите видеть то, <strong>что стоит за запросом Ваших клиентов</strong>: не боитесь видеть их травмы и «прописанные» когнитивные установки</h4>
               </div>
               <svg class="absolute -left-4 -top-4 w-20 h-20 text-gray-500 opacity-5 transform -rotate-12 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
             </div>
 
             <div class="education-plate p-6 md:p-8 min-h-[120px]">
               <div class="relative z-10">
-                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Желаете ловко считывать причинно-следственные связи между проблемами клиентов и подсознанием</h4>
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Желаете ловко <strong>считывать причинно-следственные связи между проблемами</strong> клиентов и подсознанием</h4>
               </div>
               <svg class="absolute -right-6 top-0 w-20 h-20 text-gray-500 opacity-5 transform rotate-45 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
 
             <div class="education-plate p-6 md:p-8 min-h-[120px]">
               <div class="relative z-10">
-                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Стремитесь превратить обычное «чтение расклада» в глубокую психологическую консультацию</h4>
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Стремитесь <strong>превратить</strong> обычное <strong>«чтение расклада»</strong> в глубокую <strong>психологическую консультацию</strong></h4>
               </div>
               <svg class="absolute -left-4 -bottom-4 w-20 h-20 text-gray-500 opacity-5 transform -rotate-45 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
             </div>
 
             <div class="education-plate p-6 md:p-8 min-h-[120px]">
               <div class="relative z-10">
-                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Ищете уникальный инструмент, который поможет Вам узнать самого себя и окружающих</h4>
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Ищете уникальный инструмент, который поможет Вам <strong>узнать самого себя</strong> и окружающих</h4>
               </div>
               <svg class="absolute left-1/2 -bottom-8 w-20 h-20 text-gray-500 opacity-5 transform -translate-x-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
             </div>
 
             <div class="education-plate p-6 md:p-8 min-h-[120px]">
               <div class="relative z-10">
-                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Мечтаете стать уникальным тарологом, за чьим мнением выстраивается очередь</h4>
+                <h4 class="text-[#EAEFEA] font-medium text-sm md:text-base leading-tight">Мечтаете <strong>найти путь решения глубинных проблем</strong></h4>
               </div>
               <svg class="absolute -right-4 -bottom-4 w-20 h-20 text-gray-500 opacity-5 transform rotate-12 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
             </div>
@@ -249,31 +251,72 @@
             <img src="img/moon/1.jpg" alt="О курсе" class="w-full aspect-square object-cover rounded-none md:rounded-2xl" referrerpolicy="no-referrer">
           </div>
           <div class="space-y-6">
-            <p>Я приглашаю вас в курс-погружение <strong>«Хроники Безумной Луны»</strong>, воплощающий девиантный формат обучения: исследуя слои символизма мы не только превращаемся в тарологов, которые видят своих клиентов «как на ладони» и дают им тончайшие рекомендации, но и исцеляем себя, заглядывая в бездну своих собственных тайн и страхов, попутно решая свои психологические проблемы. Дешевле и порой действеннее психотерапии!</p>
-            <p>Курс универсален и подходит как новичкам, которые только взяли карты в руки, так и профессионалам. Главное лишь Ваше желание использовать Таро как психологический инструмент и стремление «закопаться» в процессе консультации и вывести проблему как она есть из самых глубин бессознательного.</p>
+            <p>Я приглашаю вас в курс-погружение <strong>«Хроники Безумной Луны»</strong>, воплощающий <strong>девиантный формат обучения</strong>: исследуя слои символизма мы не только превращаемся в тарологов, которые <strong>видят своих клиентов «как на ладони»</strong> и дают им <strong>тончайшие рекомендации</strong>, но и <strong>исцеляем себя</strong>, заглядывая в бездну своих собственных тайн и страхов, попутно решая свои психологические проблемы. Дешевле и порой действеннее психотерапии!</p>
+            <p><strong>Курс универсален и подходит как новичкам, которые только взяли карты в руки, так и профессионалам.</strong> Главное лишь Ваше желание использовать Таро как психологический инструмент и стремление «закопаться» в процессе консультации и вывести проблему как она есть из самых глубин бессознательного.</p>
           </div>
         </section>
 
         <section class="reveal">
-          <h3 class="text-xl md:text-2xl font-host font-medium text-[#EAEFEA] mb-6">Что Вас ждет на курсе:</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              <div class="bg-white/[0.03] backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col">
-                <span class="text-sm md:text-base text-[#A8B0A9]">Уникальный психологический подход к чтению арканов: анализ карт без лишней эзотерики, но с использованием символизма общеизвестных психологических школ: аналитическая психология Юнга, психоанализ Фрейда, теория психосоциального развития Эриксона, цветовая диагностика Люшера и др. Да, карты Таро содержат все это и Таро Безумной Луны более всего</span>
+          <span class="text-xs uppercase tracking-[0.3em] font-semibold text-[#B4D8C4] mb-4 block">ВНУТРИ ХРОНИК</span>
+          <div class="relative py-12 px-8 md:px-12 bg-white/[0.03] backdrop-blur-md rounded-[2.5rem] border border-white/5 overflow-hidden">
+            <!-- Decorative background elements -->
+            <div class="absolute -top-24 -left-24 w-64 h-64 bg-[#B4D8C4]/10 rounded-full blur-[80px]"></div>
+            <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-[#B4D8C4]/5 rounded-full blur-[80px]"></div>
+            
+            <div class="relative z-10">
+              <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                  <h3 class="text-4xl md:text-5xl font-host font-medium text-[#7D857E] leading-tight">Что Вас <span class="text-[#EAEFEA]">ждет на курсе</span>:</h3>
+                </div>
               </div>
-              <div class="bg-white/[0.03] backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col">
-                <span class="text-sm md:text-base text-[#A8B0A9]">Практические задания на протяжении всего курса, направленные как на отработку раскладов на этой безумной колоде, так и на исследование себя и работы своего личного бессознательного с символизмом карт, что позволит Вам дополнить знания, полученные из курса собственными уникальными наработками</span>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                  <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#B4D8C4] group-hover:bg-[#B4D8C4]/20 group-hover:border-[#B4D8C4]/30 transition-all duration-500">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.989-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <div class="space-y-2">
+                      <h4 class="text-[#EAEFEA] font-host font-bold text-lg">Психологический подход</h4>
+                      <p class="text-sm md:text-base text-[#A8B0A9] leading-relaxed">Уникальный психологический подход к чтению арканов: анализ карт без лишней эзотерики, но с использованием символизма общеизвестных психологических школ: аналитическая психология Юнга, психоанализ Фрейда, теория психосоциального развития Эриксона, цветовая диагностика Люшера и др. Да, карты Таро содержат все это и Таро Безумной Луны более всего</p>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#B4D8C4] group-hover:bg-[#B4D8C4]/20 group-hover:border-[#B4D8C4]/30 transition-all duration-500">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                    <div class="space-y-2">
+                      <h4 class="text-[#EAEFEA] font-host font-bold text-lg">Практика и исследование</h4>
+                      <p class="text-sm md:text-base text-[#A8B0A9] leading-relaxed">Практические задания на протяжении всего курса, направленные как на отработку раскладов на этой безумной колоде, так и на исследование себя и работы своего личного бессознательного с символизмом карт, что позволит Вам дополнить знания, полученные из курса собственными уникальными наработками</p>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#B4D8C4] group-hover:bg-[#B4D8C4]/20 group-hover:border-[#B4D8C4]/30 transition-all duration-500">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="space-y-2">
+                      <h4 class="text-[#EAEFEA] font-host font-bold text-lg">Подача материала</h4>
+                      <p class="text-sm md:text-base text-[#A8B0A9] leading-relaxed">Юмор и легкость в донесении материала: никаких занудств в лекциях все максимально доступно и интересно, ведь мы — исследователи!</p>
+                    </div>
+                  </div>
+
+                  <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#B4D8C4] group-hover:bg-[#B4D8C4]/20 group-hover:border-[#B4D8C4]/30 transition-all duration-500">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                    </div>
+                    <div class="space-y-2">
+                      <h4 class="text-[#EAEFEA] font-host font-bold text-lg">Сообщество</h4>
+                      <p class="text-sm md:text-base text-[#A8B0A9] leading-relaxed">Безумный чатик, где вы сможете найти себе товарищей по духу и перекидываться даже мемами</p>
+                    </div>
+                  </div>
               </div>
-              <div class="bg-white/[0.03] backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col">
-                <span class="text-sm md:text-base text-[#A8B0A9]">Юмор и легкость в донесении материала: никаких занудств в лекциях все максимально доступно и интересно, ведь мы — исследователи!</span>
-              </div>
-              <div class="bg-white/[0.03] backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col">
-                <span class="text-sm md:text-base text-[#A8B0A9]">Безумный чатик, где вы сможете найти себе товарищей по духу и перекидываться даже мемами</span>
-              </div>
+            </div>
           </div>
         </section>
 
         <section class="reveal">
-          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Почему именно этот курс?</h2>
+          <h2 class="text-4xl md:text-5xl font-host font-medium text-[#7D857E] mb-2 leading-tight"><span class="text-[#EAEFEA]">Почему именно этот</span> курс?</h2>
           <div class="space-y-6">
             <p>Таро Безумной Луны – колода, которая не оставляет никого равнодушным: ведь она предлагает столкнуться с собой настоящим и либо пугает, либо вызывает безумный интерес. Колода, которая является вершиной творения художника Патрика Валенцы и создавалась на протяжении более чем 30 лет.</p>
             <p>В ее символике скрыты глубины человеческого бессознательного: она приоткрывает дверь к нашим подсознательным страхам, травмам и желаниям – тому самому незримому, что порой сокрыто от нашего сознания, но является истинной причиной проблем.</p>
@@ -281,7 +324,7 @@
         </section>
 
         <section class="reveal">
-            <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Программа курса</h2>
+            <h2 class="text-4xl md:text-5xl font-host font-medium text-[#7D857E] mb-2 leading-tight"><span class="text-[#EAEFEA]">Программа</span> курса</h2>
             <div class="space-y-8">
                 <!-- Module 1 -->
                 <div>
@@ -293,20 +336,21 @@
                         <img src="img/moon/3.jpg" alt="Блок 1" class="w-full aspect-square object-cover">
                         <div class="p-6 md:p-8 pb-4 md:pb-4">
                             <ul class="list-none p-0 space-y-3 mb-0">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">История колоды: личность Патрика Валенцы и процесс создания карт</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Мир Безумной Луны: анализ авансцен арканов</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Авторская теория «зеркала» в чтении арканов</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Двуликий Янус Безумной Луны: роль фазы Луны в трактовке аркана. Анима и Анимус в символизме Таро</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Психология Безумной Луны: Персона и Тень (Карл Юнг)</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Анализ основных цветов в колоде и их психологическое значение</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">история колоды: личность Патрика Валенцы, процесс создания карт и то, как это влияет на значение арканов и трактовку раскладов;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">мир Безумной Луны: анализ основных авансцен арканов и их символизм в психике человека;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">роль Луны и ее фаз в колоде;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">авторская теория "зеркала" в чтении арканов;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">двуликий Янус: понятие Персоны и Тени в аналитической психологии Юнга и их влияние в арканах, понятие Анимы и Анимуса;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">анализ основных цветов колоды с точки зрения психофизического состояния человека, психологическое значение цвета.</span></li>
                             </ul>
                         </div>
                         <div class="bg-white/5 p-6 md:p-8 pt-4 md:pt-4 border-t border-white/5">
-                            <p class="mb-4 font-bold text-[#EAEFEA] text-lg md:text-xl">По итогу блока вы:</p>
+                            <p class="mb-4 font-bold text-[#EAEFEA] text-lg md:text-xl">В результате блока Вы:</p>
                             <ul class="list-none p-0 space-y-3">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Поймете с какими сферами колода работает лучше всего</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Узнаете о методе прогнозирования при помощи ТБЛ и значении символов</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Уже сможете читать первые расклады на ТБЛ</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">узнаете историю создания Таро Безумной Луны;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">исходя из истории поймете с какими сферами колода работает лучше всего;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">узнаете о методе прогнозирования при помощи ТБЛ и значение основных символов колоды;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">уже сможете читать расклады на ТБЛ, основываясь на первых полученных знаниях.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -323,14 +367,14 @@
                         <div class="p-6 md:p-8 pb-4 md:pb-4">
                             <p class="text-[#EAEFEA] font-bold mb-3">Подробный анализ 22 Старших Арканов с точки зрения:</p>
                             <ul class="list-none p-0 space-y-3 mb-0">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Основных девиаций</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Истории создания аркана и значения в психике Патрика Валенцы</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Глубинной травматики человека</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Тайных желаний и скрытых мотиваций человека</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Шаблонов поведения</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Причины возникновения текущих проблем</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Ключей решения проблем и исцеления травмы</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Психологического портрета</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">основных девиаций;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">истории создания аркана и значения в психике Патрика Валенцы;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">глубинной травматики человека;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">тайных желаний и скрытых мотиваций человека;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">шаблонов поведения;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">причины возникновения текущих проблем;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">ключей решения проблем и исцеления травмы;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">психологического портрета;</span></li>
                             </ul>
                         </div>
                     </div>
@@ -345,15 +389,13 @@
                         </div>
                         <img src="img/moon/5.jpg" alt="Блок 3" class="w-full aspect-square object-cover">
                         <div class="p-6 md:p-8 pb-4 md:pb-4">
-                            <p class="text-[#EAEFEA] font-bold mb-3">Анализ 40 числовых арканов с точки зрения:</p>
+                            <p class="text-[#EAEFEA] font-bold mb-3">Анализ 40 числовых арканов, в том числе:</p>
                             <ul class="list-none p-0 space-y-3 mb-0">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Системного значения аркана</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Базовых инстинктов и первичных влечений, сокрытых в аркане</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Копинг-стратегий (способов преодоления стресса), сокрытых в аркане</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Причины возникновения ситуативных затыков в жизни человека</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Способов решения материальных и психологических проблем</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Ресурсного состояния</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Исцеляющей аффирмации</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">системные значения Младших Арканов Таро;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">базовые инстинкты человека и их роль в каждой масти;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">паттерны поведения и копинг-стратегии преодоления стресса, сокрытые в арканах;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">мотивация к действию внутри каждого числового аркана;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">способы решения материальных и психологических проблем.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -368,24 +410,52 @@
                         </div>
                         <img src="img/moon/6.jpg" alt="Блок 4" class="w-full aspect-square object-cover">
                         <div class="p-6 md:p-8 pb-4 md:pb-4">
-                            <p class="text-[#EAEFEA] font-bold mb-3">Придворные Арканы:</p>
+                            <p class="text-[#EAEFEA] font-bold mb-3">конкретные значимые фигуры, сокрытые в арканах:</p>
                             <ul class="list-none p-0 space-y-3 mb-0">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Анализ 16 придворных арканов (личности в Безумной Луне)</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Типы воспитания (по Э.Эриксону), повлиявшие на девиации личностей в арканах</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Тип личности клиента по придворному аркану</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Модель поведения человека в социуме</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Патологические формы проявления личностей</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Ресурс личности для излечения травмы</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Ключ к эффективному взаимодействию с тем или иным типом личности</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">патологические формы воспитания и их влияние на дальнейшее поведение человека;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">психологические типы Придворных арканов в Безумной Луне;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">ресурс для излечения травмы.</span></li>
                             </ul>
                         </div>
-                        <div class="bg-white/5 p-6 md:p-8 pt-4 md:pt-4 border-t border-white/5">
-                            <p class="mb-4 font-bold text-[#EAEFEA] text-lg md:text-xl">По итогу блока вы:</p>
-                            <ul class="list-none p-0 space-y-3">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Понимаете психологическую подноготную любой проблемы в раскладе</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Даете четкие рекомендации по работе с «затыками» своим клиентам</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Наращиваете глубину своих консультаций</span></li>
-                            </ul>
+                    </div>
+                </div>
+
+                <!-- NEW Result Block -->
+                <div class="reveal">
+                    <div class="bg-[#B4D8C4]/5 border border-[#B4D8C4]/20 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-[#B4D8C4]/10 rounded-full blur-3xl"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl md:text-3xl font-host font-bold text-[#EAEFEA] mb-8">В результате этих теоретических блоков Вы:</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">подробно знаете символику всех арканов Таро Безумной Луны;</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">понимаете психологическую подноготную проблемы в раскладе;</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">видите не только проблему, но и способ ее решения, даете четкие рекомендации по работе с ней своим клиентам;</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">встречаетесь со своими собственными психологическими «затыками» и начинаете с ними работу;</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">умеете читать карты тонко в любом вопросе;</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">наращиваете глубину своих консультаций;</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-5 h-5 rounded-full bg-[#B4D8C4]/20 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-[#B4D8C4]"></div></div>
+                                    <span class="text-[#A8B0A9] text-sm md:text-base">приобретаете психологические знания о людях, которые можете применять как в работе с Таро, так и в жизни.</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -400,16 +470,24 @@
                         <img src="img/moon/7.jpg" alt="Блок 5" class="w-full aspect-square object-cover">
                         <div class="p-6 md:p-8 pb-4 md:pb-4">
                             <ul class="list-none p-0 space-y-3 mb-0">
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Методы работы с ТБЛ вне раскладов, авторские техники взаимодействия с колодой</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Методика «дегтя» в работе с ТБЛ (ТБЛ как колода-компаньон)</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Алгоритм чтения расклада на ТБЛ («Что за фасадом?»)</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Принципы психологического консультирования клиента</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Реальные примеры чтения психологических раскладов</span></li>
-                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">Авторские расклады, направленные на работу с Тенью</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">методы работы с ТБЛ вне раскладов;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">авторские расклады и особенности их чтения;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">практика и реальные примеры чтения раскладов на Таро Безумной Луны.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/5 p-6 md:p-8 pt-4 md:pt-4 border-t border-white/5">
+                            <p class="mb-4 font-bold text-[#EAEFEA] text-lg md:text-xl">В результате блока Вы:</p>
+                            <ul class="list-none p-0 space-y-3">
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">пополните свою копилку интересными психологическими раскладами;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">отработаете методику «дегтя» в работе с ТБЛ как колодой-компаньоном;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">узнаете новые способы работы с Таро;</span></li>
+                                <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#B4D8C4] mt-2 flex-shrink-0"></div><span class="text-[#A8B0A9]">попробуете сами читать расклады и получите обратную связь.</span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
+                <p class="text-sm md:text-base text-[#A8B0A9] italic text-center">В конце каждого блока нас будет ждать прямой эфир с обсуждением и ответами на вопросы (по необходимости).</p>
+
                 <!-- Module 5 finished -->
             </div>
         </section>
@@ -450,7 +528,7 @@
         </section>
 
         <section id="pricing" class="reveal">
-            <h2 class="text-4xl md:text-5xl font-host font-medium text-[#EAEFEA] mb-2 leading-tight">Стоимость и условия</h2>
+            <h2 class="text-4xl md:text-5xl font-host font-medium text-[#7D857E] mb-2 leading-tight"><span class="text-[#EAEFEA]">Стоимость</span> и условия</h2>
             <div class="max-w-5xl mx-auto">
                 <div class="bg-white/[0.03] backdrop-blur-sm rounded-3xl px-4 py-4 md:py-10 md:px-12 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-[#B4D8C4]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
@@ -557,10 +635,26 @@
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.01, rootMargin: '0px 0px 50px 0px' });
+        
         reveals.forEach(el => revealObserver.observe(el));
+
+        // Immediate check for elements already in view
+        const checkInitialReveals = () => {
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('active');
+                    revealObserver.unobserve(el);
+                }
+            });
+        };
+
+        // Check after a short delay
+        setTimeout(checkInitialReveals, 100);
 
         let isMenuOpen = false;
         const menuToggle = document.getElementById('menu-toggle');
